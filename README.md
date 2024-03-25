@@ -1,2 +1,9 @@
 # ketapang-berbudaye
- TUGAS AKHIR 
+ TUGAS AKHIR DIAN UTARI
+
+ SISTEM INFORMASI KEBUDAYAAN DI KABUPATEN KETAPANG
+
+- Autentikasi
+- AJAX
+- Multi Bahasa
+- Tersedia RESTFUL API
