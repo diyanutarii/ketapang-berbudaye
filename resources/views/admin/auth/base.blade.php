@@ -8,10 +8,13 @@
     <meta content="Dian Utari" name="author" />
     <meta content="Sistem Informasi Kebudayaan Kabupaten Ketapang" name="description" />
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title> {{ $title }} - {{ env('APP_NAME') }}</title>
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+    <x-favicon></x-favicon>
 
     <!-- Sweet Alerts css -->
     <link href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
@@ -51,7 +54,18 @@
     <!-- App js -->
     <script src="{{ asset('assets/js/theme.js') }}"></script>
 
-    @stack('script')
+    <script>
+        // Ajax CSRF Token
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+    </script>
+
+    @if (env('AJAX') == true)
+        @stack('script')
+    @endif
 </body>
 
 </html>

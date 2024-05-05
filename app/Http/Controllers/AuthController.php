@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
@@ -14,7 +16,7 @@ class AuthController extends Controller
 {
     function login()
     {
-        $data['title'] = __('contents.login.head-title');
+        $data['title'] = Lang::get('auth/login.head-title');
 
         return view('admin.auth.login', $data);
     }
@@ -30,18 +32,20 @@ class AuthController extends Controller
             return $request->ajax()
                 ? response()->json([
                     'code' => 200,
-                    'status' => 'authorized',
-                    'message' => __('responses.login.success.caption'),
+                    'status' => 'Authorized',
+                    'message' => __('responses.login.success.message'),
+                    'caption' => __('responses.login.success.caption'),
                 ])
                 : redirect('/dashboard')->with([
-                    'message' => __('responses.login.success.message') . "\t" . __('responses.login.success.caption'),
+                    'message' => __('responses.login.success.message'),
                 ]);
         } else {
             return $request->ajax()
                 ? response()->json([
                     'code' => 401,
-                    'status' => 'unauthorized',
-                    'message' => __('responses.login.error.caption'),
+                    'status' => 'Unauthorized',
+                    'message' => __('responses.login.error.message'),
+                    'caption' => __('responses.login.error.caption'),
                 ])
                 : back()->withErrors([
                     'message' => __('responses.login.error.message') . "\t" . __('responses.login.error.caption'),
@@ -51,7 +55,7 @@ class AuthController extends Controller
 
     function forgotPassword()
     {
-        $data['title'] = __('contents.forgot-password.head-title');
+        $data['title'] = Lang::get('auth/forgot-password.head-title');
 
         return view('admin.auth.forgot-password', $data);
     }
@@ -69,9 +73,10 @@ class AuthController extends Controller
         if ($response === Password::RESET_LINK_SENT) {
             return $request->ajax()
                 ? response()->json([
-                    'code' => 200,
-                    'status' => 'sent',
-                    'message' => __('responses.forgot-password.success.caption'),
+                    'code' => 202,
+                    'status' => 'Email Sent',
+                    'message' => __('responses.forgot-password.success.message'),
+                    'caption' => __('responses.forgot-password.success.caption'),
                 ])
                 : back()->with([
                     'message' => __('responses.forgot-password.success.message') . "\t" . __('responses.forgot-password.success.caption'),
@@ -79,9 +84,10 @@ class AuthController extends Controller
         } else {
             return $request->ajax()
                 ? response()->json([
-                    'code' => 401,
-                    'status' => 'failed',
-                    'message' => __('responses.forgot-password.error.caption'),
+                    'code' => 404,
+                    'status' => 'Email Not Send',
+                    'message' => __('responses.forgot-password.error.message'),
+                    'caption' => __('responses.forgot-password.error.caption'),
                 ])
                 : back()->withErrors([
                     'message' => __('responses.forgot-password.error.message') . "\t" . __('responses.forgot-password.error.caption'),
@@ -91,9 +97,8 @@ class AuthController extends Controller
 
     function resetPassword(Request $request)
     {
-
-        $data['title'] = __('contents.reset-password.head-title');
-        $data['user'] = User::where('email', $request->email)->firstOrFail();
+        $data['title'] = Lang::get('auth/reset-password.head-title');
+        $data['user'] = Admin::where('email', $request->email)->firstOrFail();
         $data['token'] = $request->token;
 
         return view('admin.auth.reset-password', $data);
@@ -106,18 +111,20 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password'
+        ], [
+            'password_confirmation.required' => 'konfirmasi password wajib diisi.',
         ]);
 
         $response = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
-            function (User $user, string $password) {
-                $user->forceFill([
+            function (Admin $admin, string $password) {
+                $admin->forceFill([
                     'password' => Hash::make($password)
                 ])->setRememberToken(Str::random(60));
 
-                $user->save();
+                $admin->save();
 
-                event(new PasswordReset($user));
+                event(new PasswordReset($admin));
             }
         );
 
@@ -125,8 +132,9 @@ class AuthController extends Controller
             return $request->ajax()
                 ? response()->json([
                     'code' => 200,
-                    'status' => 'success',
-                    'message' => __('responses.reset-password.success.caption'),
+                    'status' => 'Password Resetted',
+                    'message' => __('responses.reset-password.success.message'),
+                    'caption' => __('responses.reset-password.success.caption'),
                 ])
                 : redirect('/login')->with([
                     'message' => __('responses.reset-password.success.message') . "\t" . __('responses.reset-password.success.caption'),
@@ -135,8 +143,9 @@ class AuthController extends Controller
             return $request->ajax()
                 ? response()->json([
                     'code' => 401,
-                    'status' => 'failed',
-                    'message' => __('responses.reset-password.error.caption'),
+                    'status' => 'Failed',
+                    'message' => __('responses.reset-password.error.message'),
+                    'caption' => __('responses.reset-password.error.caption'),
                 ])
                 : back()->withErrors([
                     'message' => __('responses.reset-password.error.message') . "\t" . __('responses.reset-password.error.caption'),

@@ -1,20 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocalizationController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('locale/{language}', [LocalizationController::class, 'setLanguage']);
 
@@ -31,9 +21,20 @@ Route::group(['domain' => 'admin.' . env('DOMAIN')], function () {
         Route::get('logout', 'logout');
     });
 
-    Route::middleware('auth:web')->group(function () {
+    Route::middleware('auth:admin')->group(function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/', 'index');
+            Route::get('dashboard', 'index');
+        });
+
+        Route::prefix('administrators')->controller(AdminController::class)->group(function () {
+            Route::get('/', 'index');
+            Route::get('create', 'create');
+            Route::post('check', 'check');
+            Route::post('store', 'store');
+            Route::get('detail/{id}', 'detail');
+            Route::get('edit/{id}', 'edit');
+            Route::delete('destroy', 'destroy');
         });
     });
 });

@@ -1,4 +1,5 @@
-<svg id="logo" width="250" data-name="Logo Ketapang Berbudaye" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200">
+<svg id="logo" width="{{ empty($width) ? '250' : $width }}" data-name="Logo Ketapang Berbudaye"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200">
     <defs>
         <style>
             .cls-1 {
