@@ -3,7 +3,11 @@
 return [
     'name' => [
         'label' => 'Name',
-        'placeholder' => 'Enter Full Name',
+        'placeholder' => 'Enter Name',
+    ],
+    'title' => [
+        'label' => 'Title',
+        'placeholder' => 'Enter Title',
     ],
     'email' => [
         'label' => 'Email',
@@ -28,6 +32,10 @@ return [
     'photo' => [
         'label' => 'Photo',
         'placeholder' => 'Choose Photo',
+    ],
+    'image' => [
+        'label' => 'Image',
+        'placeholder' => 'Choose Image',
     ],
     'created-at' => [
         'label' => 'Created At',

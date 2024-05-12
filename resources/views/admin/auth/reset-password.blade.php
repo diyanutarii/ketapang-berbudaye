@@ -45,6 +45,13 @@
 @push('script')
     <script>
         $(document).ready(function() {
+            var Toast = Swal.mixin({
+                toast: true,
+                position: "bottom-end",
+                showConfirmButton: false,
+                timer: 3000,
+            });
+
             $("#form").on("submit", function(e) {
                 e.preventDefault();
 
@@ -105,14 +112,49 @@
                                 $("#password").focus();
                                 $("#password").addClass("is-invalid");
                             }
+                        } else {
+                            console.error(error);
+                            errorHandling(error.status);
                         }
-
-                        console.error(error);
 
                         $("#submit").html(`@lang('auth/reset-password.button')`);
                     },
                 });
             });
+
+
+            function errorHandling(errorCode) {
+                if (errorCode == 500) {
+                    Toast.fire({
+                        type: "error",
+                        title: "Gagal! \nTerjadi kesalahan pada sistem.",
+                    });
+                } else if (errorCode == 404) {
+                    Toast.fire({
+                        type: "error",
+                        title: "Data Tidak Ditemukan! \nData mungkin telah terhapus sebelumnya.",
+                    });
+                    table.ajax.reload(null, false);
+                } else if (errorCode == 419) {
+                    Toast.fire({
+                        type: "error",
+                        title: "Sesi Telah Berakhir! \nMemuat ulang sistem untuk anda.",
+                    });
+
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                } else {
+                    Toast.fire({
+                        type: "error",
+                        title: "Masalah Tidak Dikenali! \nMencoba memuat kembali untuk anda.",
+                    });
+
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                }
+            }
         });
     </script>
 @endpush

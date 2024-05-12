@@ -2,6 +2,7 @@
 
 @section('content')
     @include('admin.administrators.modal.form')
+    @include('admin.administrators.modal.detail')
 
     <div class="page-content">
         <div class="container-fluid">
@@ -42,8 +43,8 @@
                             <table id="datatable" class="table datatable dt-responsive nowrap">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">No</th>
-                                        <th></th>
+                                        <th class="text-center" width="10">No</th>
+                                        <th width="30"></th>
                                         <th>@lang('admin/administrator.table.name')</th>
                                         <th>@lang('admin/administrator.table.email')</th>
                                         <th class="text-center">@lang('admin/administrator.table.email-verification')</th>
@@ -125,15 +126,25 @@
             });
 
             // Inisiasi Dropify
-            var dropify = $("#photo").dropify({
-                messages: {
-                    default: "Klik atau seret foto ke sini",
-                    replace: "Klik atau seret untuk mengubah foto",
-                    remove: "Hapus",
-                    error: "Oops, Terjadi Kesalahan",
-                },
-            });
-
+            @if (App::isLocale('id'))
+                var dropify = $("#photo").dropify({
+                    messages: {
+                        default: "Klik atau seret foto ke sini",
+                        replace: "Klik atau seret untuk mengubah foto",
+                        remove: "Hapus",
+                        error: "Oops, Terjadi Kesalahan",
+                    },
+                });
+            @else
+                var dropify = $('.dropify').dropify({
+                    messages: {
+                        'default': 'Click or drag and drop a photo',
+                        'replace': 'Click or drag and drop to replace',
+                        'remove': 'Remove',
+                        'error': 'Error. The file is either not square, larger than 2 MB or not an acceptable file type'
+                    }
+                });
+            @endif
             // Menghapus nilai foto pada Dropify
             dropify.on("dropify.afterClear", function() {
                 $("#hiddenPhoto").val("");
@@ -209,13 +220,13 @@
                 e.stopPropagation();
 
                 $("#formModal").modal("show");
-                $("#modalTitle").html("Tambah Data");
-                $("#button").html("Simpan").removeClass("btn-warning");
+                $("#modalTitle").html("@lang('commons.modal-title.create-data')");
+                $("#button").html("@lang('forms.button.save')").removeClass("btn-warning");
 
                 $("#id").val("");
                 $("#name").val("").removeClass("is-invalid");
-                $("#username").val("").removeClass("is-invalid").prop("readonly", false);
-                $("#phoneNumber").val("").removeClass("is-invalid");
+                $("#email").val("").removeClass("is-invalid");
+                $("#level").val("").removeClass("is-invalid");
 
                 var dropify = $("#photo").dropify({
                     defaultFile: null,
@@ -241,11 +252,11 @@
                     contentType: false,
                     beforeSend: function() {
                         $("#name").removeClass("is-invalid");
-                        $("#username").removeClass("is-invalid");
-                        $("#phoneNumber").removeClass("is-invalid");
+                        $("#email").removeClass("is-invalid");
+                        $("#level").removeClass("is-invalid");
 
                         $("#button").html(
-                            '<div class="text-center"><div class="spinner-border spinner-border-sm text-white"></div> Memproses...</div>'
+                            `<div class="text-center"><div class="spinner-border spinner-border-sm text-white"></div> @lang('forms.button.save-loading')</div>`
                         );
                     },
                     success: function(response) {
@@ -256,35 +267,65 @@
                         if (response.code == 200) {
                             Toast.fire({
                                 type: "success",
-                                title: response.status + "\n" + response.message,
+                                text: response.message + "\n" + response.caption,
                             });
                         }
                     },
                     error: function(error) {
-                        console.log(error);
-                        $("#button").html("Simpan");
-
                         // Mengendalikan validasi ketika menyimpan data
                         if (error.status == 422) {
                             var responseError = error["responseJSON"]["errors"];
                             $("#nameError").html(responseError["name"]);
-                            $("#usernameError").html(responseError["username"]);
-                            $("#phoneNumberError").html(responseError["phone_number"]);
+                            $("#emailError").html(responseError["email"]);
+                            $("#levelError").html(responseError["level"]);
 
-                            if (responseError["phone_number"]) {
-                                $("#phoneNumber").addClass("is-invalid").focus();
+                            if (responseError["level"]) {
+                                $("#level").addClass("is-invalid").focus();
                             }
 
-                            if (responseError["username"]) {
-                                $("#username").addClass("is-invalid").focus();
+                            if (responseError["email"]) {
+                                $("#email").addClass("is-invalid").focus();
                             }
 
                             if (responseError["name"]) {
                                 $("#name").addClass("is-invalid").focus();
                             }
                         } else {
+                            console.error(error);
                             errorHandling(error.status);
                         }
+
+                        $("#button").html("@lang('forms.button.save')");
+                    },
+                });
+            });
+
+            $("body").on("click", ".detail", function() {
+                $.ajax({
+                    type: "POST",
+                    url: document.URL + "/check",
+                    data: {
+                        id: $(this).data("id"),
+                    },
+                    success: function(response) {
+                        $("#detailModal").modal("show");
+
+                        if (response.data.photo) {
+                            $("#photo-detail").prop("src", response.data.photo);
+                        } else {
+                            $("#photo-detail").prop("src", "image-error.png");
+                        }
+
+                        $("#name-detail").html(response.data.name);
+                        $("#email-detail").html(response.data.email);
+                        $("#level-detail").html(response.data.level);
+                        $("#email-verified-at-detail").html(response.email_verified_at);
+                        $("#created-at-detail").html(response.created_at);
+                        $("#updated-at-detail").html(response.updated_at);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                        errorHandling(error.status);
                     },
                 });
             });
@@ -298,33 +339,31 @@
                     },
                     success: function(response) {
                         $("#formModal").modal("show");
-                        $("#modalTitle").html("Sunting Data");
-                        $("#button").html("Simpan").addClass("btn-warning");
+                        $("#modalTitle").html("@lang('commons.modal-title.update-data')");
+                        $("#button").html("@lang('forms.button.save')").addClass("btn-warning");
                         $("#name").val("").removeClass("is-invalid");
-                        $("#username")
-                            .val("")
-                            .removeClass("is-invalid")
-                            .prop("readonly", true);
-                        $("#phoneNumber").val("").removeClass("is-invalid");
+                        $("#email").val("").removeClass("is-invalid");
+                        $("#level").val("").removeClass("is-invalid");
 
-                        $("#id").val(response.id);
-                        $("#name").val(response.name);
-                        $("#username").val(response.username);
-                        $("#phoneNumber").val(response.phone_number);
-                        $("#hiddenPhoto").val(response.photo);
+                        $("#id").val(response.data.id);
+                        $("#name").val(response.data.name);
+                        $("#email").val(response.data.email);
+                        $("#level").val(response.data.level);
+                        $("#hiddenPhoto").val(response.data.photo);
 
                         var dropify = $("#photo").dropify({
-                            defaultFile: response.photo,
+                            defaultFile: response.data.photo,
                         });
 
                         dropify = dropify.data("dropify");
                         dropify.resetPreview();
                         dropify.clearElement();
-                        dropify.settings.defaultFile = response.photo;
+                        dropify.settings.defaultFile = response.data.photo;
                         dropify.destroy();
                         dropify.init();
                     },
                     error: function(error) {
+                        console.error(error);
                         errorHandling(error.status);
                     },
                 });
@@ -345,7 +384,6 @@
                     cancelButtonText: "@lang('commons.confirmation.no-button')",
                 }).then(function(result) {
                     if (result.value) {
-                        console.log("mantap");
                         $.ajax({
                             type: "DELETE",
                             url: document.URL + "/destroy",
@@ -374,7 +412,7 @@
                 if (errorCode == 500) {
                     Toast.fire({
                         type: "error",
-                        title: "Gagal! \nPeriksa koneksi databasemu.",
+                        title: "Gagal! \nTerjadi kesalahan pada sistem.",
                     });
                 } else if (errorCode == 404) {
                     Toast.fire({

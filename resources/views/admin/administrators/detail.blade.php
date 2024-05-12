@@ -75,14 +75,16 @@
                                 <span class="font-weight-bold">
                                     @lang('forms.created-at.label')
                                 </span>
-                                <p>{{ Carbon\Carbon::parse($administrator->created_at)->isoFormat('dddd, D MMMM Y | HH:mm:ss') }}</p>
+                                <p>{{ Carbon\Carbon::parse($administrator->created_at)->isoFormat('dddd, D MMMM Y | HH:mm:ss') }}
+                                </p>
                             </div>
 
                             <div class="form-group">
                                 <span class="font-weight-bold">
                                     @lang('forms.updated-at.label')
                                 </span>
-                                <p>{{ Carbon\Carbon::parse($administrator->updated_at)->isoFormat('dddd, D MMMM Y | HH:mm:ss') }}</p>
+                                <p>{{ Carbon\Carbon::parse($administrator->updated_at)->isoFormat('dddd, D MMMM Y | HH:mm:ss') }}
+                                </p>
                             </div>
                         </div>
                     </div>

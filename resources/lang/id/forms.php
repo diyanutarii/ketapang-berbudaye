@@ -3,7 +3,11 @@
 return [
     'name' => [
         'label' => 'Nama',
-        'placeholder' => 'Masukkan Nama Lengkap',
+        'placeholder' => 'Masukkan Nama',
+    ],
+    'title' => [
+        'label' => 'Judul',
+        'placeholder' => 'Masukkan Judul',
     ],
     'email' => [
         'label' => 'Email',
@@ -28,6 +32,10 @@ return [
     'photo' => [
         'label' => 'Foto',
         'placeholder' => 'Pilih Foto',
+    ],
+    'image' => [
+        'label' => 'Gambar',
+        'placeholder' => 'Pilih Gambar',
     ],
     'created-at' => [
         'label' => 'Dibuat Pada',

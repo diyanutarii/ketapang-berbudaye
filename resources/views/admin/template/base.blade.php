@@ -146,10 +146,10 @@
                 },
             });
 
-            $('.dropify').dropify({
+            var dropify = $('.dropify').dropify({
                 messages: {
-                    'default': 'Klik atau seret dan lepas untuk memasukkan foto',
-                    'replace': 'Klik atau seret dan lepas untuk mengganti foto',
+                    'default': 'Klik atau seret dan lepas untuk memasukkan file',
+                    'replace': 'Klik atau seret dan lepas untuk mengganti file',
                     'remove': 'Hapus',
                     'error': 'Galat. Ukuran terlalu besar melebihi 2MB atau tipe file tidak didukung'
                 }
@@ -167,15 +167,20 @@
                 },
             });
 
-            $('.dropify').dropify({
+            var dropify = $('.dropify').dropify({
                 messages: {
-                    'default': 'Click or drag and drop a photo',
+                    'default': 'Click or drag and drop a file',
                     'replace': 'Click or drag and drop to replace',
                     'remove': 'Remove',
                     'error': 'Error. The file is either not square, larger than 2 MB or not an acceptable file type'
                 }
             });
         @endif
+
+        dropify.on("dropify.afterClear", function() {
+            $("#hiddenPhoto").val("");
+            $("#hiddenImage").val("");
+        });
     </script>
 
     @if (env('AJAX') == true)

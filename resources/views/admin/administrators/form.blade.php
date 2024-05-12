@@ -35,16 +35,16 @@
                     enctype="multipart/form-data">
                     <div class="card-body row">
                         @csrf
-                        <input type="hidden" name="id"
+                        <input id="id" type="hidden" name="id"
                             value="{{ empty($administrator->id) ? null : $administrator->id }}">
                         <div class="col-12 col-lg-5">
                             <div class="form-group mt-2">
                                 <label for="photo">
                                     @lang('forms.photo.label')
                                 </label>
-                                <input type="hidden" name="hidden_photo"
+                                <input id="hiddenPhoto" type="hidden" name="hidden_photo"
                                     value="{{ empty($administrator->photo) ? null : $administrator->photo }}">
-                                <input type="file" name="photo" class="dropify"
+                                <input id="photo" type="file" name="photo" class="dropify"
                                     data-default-file="{{ empty($administrator->photo) ? null : asset($administrator->photo) }}"
                                     accept=".jpg, .png" />
                             </div>
@@ -54,7 +54,7 @@
                                 <label for="name">
                                     @lang('forms.name.label')<span class="text-danger" title="@lang('commons.required')">*</span>
                                 </label>
-                                <input type="text" id="name" name="name" class="form-control"
+                                <input id="name" type="text" name="name" class="form-control"
                                     placeholder="@lang('forms.name.placeholder')"
                                     @if (old('name')) value="{{ old('name') }}"
                                     @else
@@ -67,7 +67,7 @@
                                     @lang('forms.email.label')
                                     <span class="text-danger" title="@lang('commons.required')">*</span>
                                 </label>
-                                <input type="text" id="email" name="email" class="form-control"
+                                <input id="email" type="text" name="email" class="form-control"
                                     placeholder="@lang('forms.email.placeholder')"
                                     @if (old('email')) value="{{ old('email') }}"
                                     @else
@@ -80,7 +80,7 @@
                                     @lang('forms.level.label')
                                     <span class="text-danger" title="@lang('commons.required')">*</span>
                                 </label>
-                                <select class="form-control" name="level" id="level">
+                                <select id="level" class="form-control" name="level">
                                     <option value="" selected hidden disabled>@lang('forms.level.placeholder')</option>
                                     <option value="Admin"
                                         @if (old('level')) {{ old('level') == 'Admin' ? 'selected' : null }}
@@ -177,18 +177,15 @@
                             $("#levelError").html(responseError["level"]);
 
                             if (responseError["level"]) {
-                                $("#level").focus();
-                                $("#level").addClass("is-invalid");
+                                $("#level").addClass("is-invalid").focus();
                             }
 
                             if (responseError["email"]) {
-                                $("#email").focus();
-                                $("#email").addClass("is-invalid");
+                                $("#email").addClass("is-invalid").focus();
                             }
 
                             if (responseError["name"]) {
-                                $("#name").focus();
-                                $("#name").addClass("is-invalid");
+                                $("#name").addClass("is-invalid").focus();
                             }
                         } else {
                             console.error(error);
@@ -208,7 +205,7 @@
                 if (errorCode == 500) {
                     Toast.fire({
                         type: "error",
-                        title: "Gagal! \nPeriksa koneksi databasemu.",
+                        title: "Gagal! \nTerjadi kesalahan pada sistem.",
                     });
                 } else if (errorCode == 404) {
                     Toast.fire({

@@ -10,4 +10,10 @@ return [
         'no-button' => 'No',
     ],
     'required' => 'Required',
+    'modal-title' => [
+        'detail-data' => 'Data Details',
+        'create-data' => 'Create Data',
+        'update-data' => 'Edit Data',
+        'destroy-data' => 'Delete Data',
+    ],
 ];

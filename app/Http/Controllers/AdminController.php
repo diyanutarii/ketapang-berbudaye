@@ -58,17 +58,32 @@ class AdminController extends Controller
 
     function create()
     {
-        $data['title'] = 'Tambah Admin';
+        $data['title'] = Lang::get('admin/administrator.head-title');
 
         return view('admin.administrators.form', $data);
     }
 
     function edit(Request $request)
     {
-        $data['title'] = 'Edit';
+        $data['title'] = Lang::get('admin/administrator.head-title');
         $data['administrator'] = Admin::where('id', Crypt::decrypt($request->id))->firstOrFail();
 
         return view('admin.administrators.form', $data);
+    }
+
+    function check(Request $request)
+    {
+        $data = Admin::findOrFail($request->id);
+        $email_verified_at = empty($data->email_verified_at) ? '-' : Carbon::parse($data->email_verified_at)->isoFormat('dddd, D MMMM Y | HH:mm:ss');
+        $created_at = Carbon::parse($data->created_at)->isoFormat('dddd, D MMMM Y | HH:mm:ss');
+        $updated_at = Carbon::parse($data->updated_at)->isoFormat('dddd, D MMMM Y | HH:mm:ss');
+
+        return response()->json([
+            'data' => $data,
+            'email_verified_at' => $email_verified_at,
+            'created_at' => $created_at,
+            'updated_at' => $updated_at,
+        ]);
     }
 
     function store(Request $request)

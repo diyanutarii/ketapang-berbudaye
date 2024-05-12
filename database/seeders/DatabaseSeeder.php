@@ -16,6 +16,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminSeeder::class,
+            // TangibleCultureHeritageSeeder::class,
+            // IntangibleCultureHeritageSeeder::class,
+            // EventSeeder::class,
+            // librarySeeder::class,
         ]);
     }
 }
