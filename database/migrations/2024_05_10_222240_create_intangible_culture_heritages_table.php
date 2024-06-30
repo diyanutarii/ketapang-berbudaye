@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('name');
             $table->string('sk_number')->nullable();
-            $table->string('address')->nullable();
             $table->text('description')->nullable();
             $table->string('category_id')->nullable();
             $table->timestamps();

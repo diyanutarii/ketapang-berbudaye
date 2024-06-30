@@ -28,7 +28,7 @@
             </div>
             <!-- end page title -->
 
-            <x-alert></x-alert>
+            <x-admin-alert></x-admin-alert>
 
             <div class="card">
                 <form id="form" action="{{ url('events/store') }}" method="POST" enctype="multipart/form-data">
@@ -59,6 +59,31 @@
                                     @else
                                         value="{{ empty($event->name) ? null : $event->name }}" @endif>
                                 <span id="nameError" class="invalid-feedback"></span>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="date">
+                                    @lang('forms.date.label')<span class="text-danger" title="@lang('commons.required')">*</span>
+                                </label>
+                                <input id="date" type="date" name="date" class="form-control"
+                                    placeholder="@lang('forms.date.placeholder')"
+                                    @if (old('date')) value="{{ old('date') }}"
+                                    @else
+                                        value="{{ empty($event->date) ? null : $event->date }}" @endif>
+                                <span id="dateError" class="invalid-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group mt-2">
+                                <label for="description">
+                                    @lang('forms.description.label')<span class="text-danger" title="@lang('commons.required')">*</span>
+                                </label>
+                                <textarea id="description" name="description" class="tinymce" rows="10">
+                                    @if (old('description'))
+{{ old('description') }}
+@else
+{{ empty($event->description) ? null : $event->description }}
+@endif
+                                </textarea>
                             </div>
                         </div>
                     </div>
@@ -185,7 +210,8 @@
                     setTimeout(() => {
                         window.location.reload();
                     }, 3000);
-                }            }
+                }
+            }
         });
     </script>
 @endpush

@@ -81,6 +81,8 @@ class IntangibleCulturalController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'sk_number' => 'required',
+            'description' => 'required',
         ]);
 
         $photo = $request->hidden_photo;
@@ -97,6 +99,8 @@ class IntangibleCulturalController extends Controller
         ], [
             'photo' => $photo,
             'name' => $request->name,
+            'sk_number' => $request->sk_number,
+            'description' => $request->description,
         ]);
 
         if ($request->id == $data->id) {

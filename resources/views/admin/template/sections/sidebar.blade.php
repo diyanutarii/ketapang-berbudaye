@@ -2,7 +2,7 @@
     <div data-simplebar class="h-100">
         <div class="navbar-brand-box">
             <a href="{{ url('/') }}" class="logo">
-                <x-logo width="150"></x-logo>
+                <x-admin-logo width="50"></x-admin-logo>
             </a>
         </div>
 

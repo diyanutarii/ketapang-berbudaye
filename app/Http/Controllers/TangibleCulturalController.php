@@ -79,8 +79,14 @@ class TangibleCulturalController extends Controller
 
     function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required',
+            'sk_number' => 'required',
+            'address' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'description' => 'required',
         ]);
 
         $photo = $request->hidden_photo;
@@ -97,6 +103,11 @@ class TangibleCulturalController extends Controller
         ], [
             'photo' => $photo,
             'name' => $request->name,
+            'sk_number' => $request->sk_number,
+            'address' => $request->address,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'description' => $request->description,
         ]);
 
         if ($request->id == $data->id) {

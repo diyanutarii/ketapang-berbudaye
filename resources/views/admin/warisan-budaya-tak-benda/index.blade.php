@@ -1,8 +1,8 @@
 @extends('admin.template.base')
 
 @section('content')
-    @include('admin.warisan-budaya-tak-bunda.modal.form')
-    @include('admin.warisan-budaya-tak-bunda.modal.detail')
+    @include('admin.warisan-budaya-tak-benda.modal.form')
+    @include('admin.warisan-budaya-tak-benda.modal.detail')
 
     <div class="page-content">
         <div class="container-fluid">

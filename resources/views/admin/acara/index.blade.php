@@ -1,8 +1,8 @@
 @extends('admin.template.base')
 
 @section('content')
-    @include('admin.events.modal.form')
-    @include('admin.events.modal.detail')
+    @include('admin.acara.modal.form')
+    @include('admin.acara.modal.detail')
 
     <div class="page-content">
         <div class="container-fluid">
@@ -24,7 +24,7 @@
             </div>
             <!-- end page title -->
 
-            <x-alert></x-alert>
+            <x-admin-alert></x-admin-alert>
 
             <div class="row">
                 <div class="col-12">

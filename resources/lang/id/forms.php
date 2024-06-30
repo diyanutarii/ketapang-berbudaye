@@ -9,9 +9,37 @@ return [
         'label' => 'Judul',
         'placeholder' => 'Masukkan Judul',
     ],
+    'sk-number' => [
+        'label' => 'Nomor SK',
+        'placeholder' => 'Masukkan Nomor SK',
+    ],
     'email' => [
         'label' => 'Email',
         'placeholder' => 'Masukkan Email',
+    ],
+    'date' => [
+        'label' => 'Tanggal',
+        'placeholder' => 'Masukkan Tanggal',
+    ],
+    'address' => [
+        'label' => 'Alamat',
+        'placeholder' => 'Masukkan Alamat',
+    ],
+    'latitude' => [
+        'label' => 'Latitude',
+        'placeholder' => 'Masukkan Latitude',
+    ],
+    'longitude' => [
+        'label' => 'Longitude',
+        'placeholder' => 'Masukkan Longitude',
+    ],
+    'description' => [
+        'label' => 'Deskripsi',
+        'placeholder' => 'Masukkan Deskripsi',
+    ],
+    'content' => [
+        'label' => 'Konten',
+        'placeholder' => 'Masukkan Konten',
     ],
     'password' => [
         'label' => 'Kata Sandi',

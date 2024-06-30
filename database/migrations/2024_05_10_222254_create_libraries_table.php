@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('category_id')->nullable();
             $table->string('title');
             $table->string('slug')->nullable();
-            $table->string('tag')->nullable();
+            $table->json('tags')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();
         });

@@ -28,7 +28,7 @@
             </div>
             <!-- end page title -->
 
-            <x-alert></x-alert>
+            <x-admin-alert></x-admin-alert>
 
             <div class="card">
                 <form id="form" action="{{ url('administrators/store') }}" method="POST"

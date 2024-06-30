@@ -38,7 +38,7 @@ class EventController extends Controller
                 ->make(true);
         }
 
-        return view('admin.events.index', $data);
+        return view('admin.acara.index', $data);
     }
 
     function detail(Request $request)
@@ -46,14 +46,14 @@ class EventController extends Controller
         $data['title'] = Lang::get('admin/event.head-title');
         $data['event'] = Event::where('id', Crypt::decrypt($request->id))->firstOrFail();
 
-        return view('admin.events.detail', $data);
+        return view('admin.acara.detail', $data);
     }
 
     function create()
     {
         $data['title'] = Lang::get('admin/event.head-title');
 
-        return view('admin.events.form', $data);
+        return view('admin.acara.form', $data);
     }
 
     function edit(Request $request)
@@ -61,7 +61,7 @@ class EventController extends Controller
         $data['title'] = Lang::get('admin/event.head-title');
         $data['event'] = Event::where('id', Crypt::decrypt($request->id))->firstOrFail();
 
-        return view('admin.events.form', $data);
+        return view('admin.acara.form', $data);
     }
 
     function check(Request $request)

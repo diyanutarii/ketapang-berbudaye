@@ -28,25 +28,66 @@
             </div>
             <!-- end page title -->
 
-            <x-alert></x-alert>
+            <x-admin-alert></x-admin-alert>
 
             <div class="card">
                 <form id="form" action="{{ url('intangible-cultural-heritages/store') }}" method="POST"
                     enctype="multipart/form-data">
                     <div class="card-body row">
                         @csrf
-                        <input id="id" type="hidden" name="id"
-                            value="{{ empty($intangible_cultural_heritage->id) ? null : $intangible_cultural_heritage->id }}">
-                        <div class="col-12 col-lg-5">
-                            <div class="form-group mt-2">
-                                <label for="photo">
-                                    @lang('forms.photo.label')
-                                </label>
-                                <input id="hiddenPhoto" type="hidden" name="hidden_photo"
-                                    value="{{ empty($intangible_cultural_heritage->photo) ? null : $intangible_cultural_heritage->photo }}">
-                                <input id="photo" type="file" name="photo" class="dropify"
-                                    data-default-file="{{ empty($intangible_cultural_heritage->photo) ? null : asset($intangible_cultural_heritage->photo) }}"
-                                    accept=".jpg, .png" />
+                        <div class="card-body row">
+                            @csrf
+                            <input id="id" type="hidden" name="id"
+                                value="{{ empty($intangible_cultural_heritage->id) ? null : $intangible_cultural_heritage->id }}">
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group mt-2">
+                                    <label for="photo">
+                                        @lang('forms.photo.label')
+                                    </label>
+                                    <input id="hiddenPhoto" type="hidden" name="hidden_photo"
+                                        value="{{ empty($intangible_cultural_heritage->photo) ? null : $intangible_cultural_heritage->photo }}">
+                                    <input id="photo" type="file" name="photo" class="dropify"
+                                        data-default-file="{{ empty($intangible_cultural_heritage->photo) ? null : asset($intangible_cultural_heritage->photo) }}"
+                                        accept=".jpg, .png" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group mt-2">
+                                    <label for="name">
+                                        @lang('forms.name.label')<span class="text-danger" title="@lang('commons.required')">*</span>
+                                    </label>
+                                    <input id="name" type="text" name="name" class="form-control"
+                                        placeholder="@lang('forms.name.placeholder')"
+                                        @if (old('name')) value="{{ old('name') }}"
+                                        @else
+                                            value="{{ empty($intangible_cultural_heritage->name) ? null : $intangible_cultural_heritage->name }}" @endif>
+                                    <span id="nameError" class="invalid-feedback"></span>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label for="name">
+                                        @lang('forms.sk-number.label')<span class="text-danger" title="@lang('commons.required')">*</span>
+                                    </label>
+                                    <input id="sk_number" type="text" name="sk_number" class="form-control"
+                                        placeholder="@lang('forms.sk-number.placeholder')"
+                                        @if (old('sk_number')) value="{{ old('sk_number') }}"
+                                        @else
+                                            value="{{ empty($intangible_cultural_heritage->sk_number) ? null : $intangible_cultural_heritage->sk_number }}" @endif>
+                                    <span id="skNumberError" class="invalid-feedback"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group mt-2">
+                                    <label for="description">
+                                        @lang('forms.description.label')<span class="text-danger" title="@lang('commons.required')">*</span>
+                                    </label>
+                                    <textarea id="description" name="description" class="tinymce" rows="10">
+                                        @if (old('description'))
+{{ old('description') }}
+@else
+{{ empty($intangible_cultural_heritage->description) ? null : $intangible_cultural_heritage->description }}
+@endif
+                                    </textarea>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 col-lg-7">

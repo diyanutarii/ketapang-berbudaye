@@ -28,7 +28,7 @@
             </div>
             <!-- end page title -->
 
-            <x-alert></x-alert>
+            <x-admin-alert></x-admin-alert>
 
             <div class="card">
                 <form id="form" action="{{ url('libraries/store') }}" method="POST" enctype="multipart/form-data">
@@ -59,6 +59,20 @@
                                     @else
                                         value="{{ empty($library->title) ? null : $library->title }}" @endif>
                                 <span id="titleError" class="invalid-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group mt-2">
+                                <label for="content">
+                                    @lang('forms.content.label')<span class="text-danger" title="@lang('commons.required')">*</span>
+                                </label>
+                                <textarea id="content" name="content" class="tinymce" rows="10">
+                                    @if (old('content'))
+{{ old('content') }}
+@else
+{{ empty($library->content) ? null : $library->content }}
+@endif
+                                </textarea>
                             </div>
                         </div>
                     </div>

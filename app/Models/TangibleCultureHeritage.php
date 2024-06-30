@@ -12,5 +12,10 @@ class TangibleCultureHeritage extends Model
     protected $fillable = [
         'photo',
         'name',
+        'sk_number',
+        'address',
+        'latitude',
+        'longitude',
+        'description',
     ];
 }

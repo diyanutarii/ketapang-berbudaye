@@ -15,10 +15,14 @@
     <x-favicon></x-favicon>
 
     <!-- Datatables css -->
-    <link href="{{ asset('assets-admin/plugins/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets-admin/plugins/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets-admin/plugins/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets-admin/plugins/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/plugins/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets-admin/plugins/datatables/responsive.bootstrap4.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets-admin/plugins/datatables/buttons.bootstrap4.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets-admin/plugins/datatables/select.bootstrap4.css') }}" rel="stylesheet"
+        type="text/css" />
 
     <!-- Sweet Alerts css -->
     <link href="{{ asset('assets-admin/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
@@ -109,6 +113,17 @@
 
     <!-- App js -->
     <script src="{{ asset('assets-admin/js/theme.js') }}"></script>
+
+    <script script src="https://cdn.tiny.cloud/1/mntelhivl7uwt5ikv4mj25qfr692ljx6u47h7skin30mj5ke/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: '.tinymce',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace visualblocks wordcount linkchecker markdown ',
+            toolbar: 'undo redo | blocks fontsize | bold italic underline strikethrough | link image | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat ',
+        });
+    </script>
 
     <script>
         // Ajax CSRF Token

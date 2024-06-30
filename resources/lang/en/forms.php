@@ -9,9 +9,37 @@ return [
         'label' => 'Title',
         'placeholder' => 'Enter Title',
     ],
+    'sk-number' => [
+        'label' => 'SK Number',
+        'placeholder' => 'Enter SK Number',
+    ],
     'email' => [
         'label' => 'Email',
         'placeholder' => 'Enter Email Address',
+    ],
+    'date' => [
+        'label' => 'Date',
+        'placeholder' => 'Enter Date',
+    ],
+    'address' => [
+        'label' => 'Address',
+        'placeholder' => 'Enter Address',
+    ],
+    'latitude' => [
+        'label' => 'Latitude',
+        'placeholder' => 'Enter Latitude',
+    ],
+    'longitude' => [
+        'label' => 'Longitude',
+        'placeholder' => 'Enter Longitude',
+    ],
+    'description' => [
+        'label' => 'Description',
+        'placeholder' => 'Enter Description',
+    ],
+    'content' => [
+        'label' => 'Content',
+        'placeholder' => 'Enter Content',
     ],
     'password' => [
         'label' => 'Password',

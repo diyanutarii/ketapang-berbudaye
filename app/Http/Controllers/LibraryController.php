@@ -38,7 +38,7 @@ class LibraryController extends Controller
                 ->make(true);
         }
 
-        return view('admin.libraries.index', $data);
+        return view('admin.pustaka.index', $data);
     }
 
     function detail(Request $request)
@@ -46,14 +46,14 @@ class LibraryController extends Controller
         $data['title'] = Lang::get('admin/library.head-title');
         $data['library'] = Library::where('id', Crypt::decrypt($request->id))->firstOrFail();
 
-        return view('admin.libraries.detail', $data);
+        return view('admin.pustaka.detail', $data);
     }
 
     function create()
     {
         $data['title'] = Lang::get('admin/library.head-title');
 
-        return view('admin.libraries.form', $data);
+        return view('admin.pustaka.form', $data);
     }
 
     function edit(Request $request)
@@ -61,7 +61,7 @@ class LibraryController extends Controller
         $data['title'] = Lang::get('admin/library.head-title');
         $data['library'] = Library::where('id', Crypt::decrypt($request->id))->firstOrFail();
 
-        return view('admin.libraries.form', $data);
+        return view('admin.pustaka.form', $data);
     }
 
     function check(Request $request)
@@ -81,6 +81,7 @@ class LibraryController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'content' => 'required',
         ]);
 
         $image = $request->hidden_image;
@@ -98,6 +99,7 @@ class LibraryController extends Controller
         ], [
             'image' => $image,
             'title' => $request->title,
+            'content' => $request->content,
         ]);
 
         if ($request->id == $data->id) {

@@ -12,5 +12,7 @@ class IntangibleCultureHeritage extends Model
     protected $fillable = [
         'photo',
         'name',
+        'sk_number',
+        'description',
     ];
 }
