@@ -19,6 +19,6 @@ class DashboardController extends Controller
         $data['events_count'] = Event::count();
         $data['libraries_count'] = Library::count();
 
-        return view('admin.dashboard', $data);
+        return view('admin.index', $data);
     }
 }

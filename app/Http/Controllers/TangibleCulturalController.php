@@ -38,7 +38,7 @@ class TangibleCulturalController extends Controller
                 ->make(true);
         }
 
-        return view('admin.tangible-cultural-heritages.index', $data);
+        return view('admin.situs-cagar-budaya.index', $data);
     }
 
     function detail(Request $request)
@@ -46,14 +46,14 @@ class TangibleCulturalController extends Controller
         $data['title'] = Lang::get('admin/tangible.head-title');
         $data['tangible_cultural_heritage'] = TangibleCultureHeritage::where('id', Crypt::decrypt($request->id))->firstOrFail();
 
-        return view('admin.tangible-cultural-heritages.detail', $data);
+        return view('admin.situs-cagar-budaya.detail', $data);
     }
 
     function create()
     {
         $data['title'] = Lang::get('admin/tangible.head-title');
 
-        return view('admin.tangible-cultural-heritages.form', $data);
+        return view('admin.situs-cagar-budaya.form', $data);
     }
 
     function edit(Request $request)
@@ -61,7 +61,7 @@ class TangibleCulturalController extends Controller
         $data['title'] = Lang::get('admin/tangible.head-title');
         $data['tangible_cultural_heritage'] = TangibleCultureHeritage::where('id', Crypt::decrypt($request->id))->firstOrFail();
 
-        return view('admin.tangible-cultural-heritages.form', $data);
+        return view('admin.situs-cagar-budaya.form', $data);
     }
 
     function check(Request $request)

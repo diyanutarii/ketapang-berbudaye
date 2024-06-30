@@ -4,14 +4,14 @@
     <div class="mx-auto w-auto d-block bg-white shadow-lg rounded my-5">
         <div class="py-3 px-5">
             <div class="dropdown d-inline-block float-right">
-                <x-lang-button></x-lang-button>
+                <x-admin-lang-button></x-admin-lang-button>
             </div>
 
             <div class="text-center mb-1">
-                <x-logo></x-logo>
+                <x-admin-logo></x-admin-logo>
             </div>
 
-            <x-alert></x-alert>
+            <x-admin-alert></x-admin-alert>
 
             <h1 class="h5 mt-2 mb-1">@lang('auth/forgot-password.title')</h1>
             <p class="text-muted mb-4">@lang('auth/forgot-password.subtitle')</p>

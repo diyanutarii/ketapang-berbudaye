@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             // TangibleCultureHeritageSeeder::class,
             // IntangibleCultureHeritageSeeder::class,
             // EventSeeder::class,
-            // librarySeeder::class,
+            // LibrarySeeder::class,
         ]);
     }
 }

@@ -10,14 +10,14 @@
 
         <div class="d-flex align-items-center">
             <div class="dropdown d-inline-block">
-                <x-lang-button></x-lang-button>
+                <x-admin-lang-button></x-admin-lang-button>
             </div>
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <img class="rounded-circle header-profile-user"
-                        src="{{ asset(empty(Auth::user()->photo) ? 'assets/images/users/avatar-2.jpg' : Auth::user()->photo) }}">
+                        src="{{ asset(empty(Auth::user()->photo) ? 'assets-admin/images/users/avatar-2.jpg' : Auth::user()->photo) }}">
                     <span class="d-none d-sm-inline-block ml-1">{{ Auth::user()->name }}</span>
                     <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                 </button>

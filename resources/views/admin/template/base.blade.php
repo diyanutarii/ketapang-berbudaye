@@ -5,8 +5,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta content="Dian Utari" name="author" />
-    <meta content="Sistem Informasi Kebudayaan Kabupaten Ketapang" name="description" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -17,22 +15,21 @@
     <x-favicon></x-favicon>
 
     <!-- Datatables css -->
-    <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/plugins/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/plugins/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/plugins/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/plugins/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/plugins/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Sweet Alerts css -->
-    <link href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- Dropify css -->
-    <link href="{{ asset('assets/plugins/dropify/dropify.min.css') }}" rel="stylesheet" type="text/css" />
-
+    <link href="{{ asset('assets-admin/plugins/dropify/dropify.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- App css -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/theme.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/theme.min.css') }}" rel="stylesheet" type="text/css" />
 
     @stack('style')
 </head>
@@ -51,12 +48,10 @@
         <!-- Start right Content here -->
         <!-- ============================================================== -->
         <div class="main-content">
-
             @yield('content')
             <!-- End Page-content -->
 
             @include('admin.template.sections.footer')
-
         </div>
         <!-- end main content-->
 
@@ -67,53 +62,53 @@
     <div class="menu-overlay"></div>
 
     <!-- jQuery  -->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/js/metismenu.min.js') }}"></script>
-    <script src="{{ asset('assets/js/waves.js') }}"></script>
-    <script src="{{ asset('assets/js/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/metismenu.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/waves.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/simplebar.min.js') }}"></script>
 
     <!-- Datatables  -->
-    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/dataTables.keyTable.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/dataTables.select.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/dataTables.bootstrap4.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/datatables/vfs_fonts.js') }}"></script>
 
     <!-- Sparkline Js-->
-    <script src="{{ asset('assets/plugins/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
 
     <!-- Chart Js-->
-    <script src="{{ asset('assets/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
 
     <!-- Chart Custom Js-->
-    <script src="{{ asset('assets/pages/knob-chart-demo.js') }}"></script>
+    <script src="{{ asset('assets-admin/pages/knob-chart-demo.js') }}"></script>
 
     <!-- Morris Js-->
-    <script src="{{ asset('assets/plugins/morris-js/morris.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/morris-js/morris.min.js') }}"></script>
 
     <!-- Raphael Js-->
-    <script src="{{ asset('assets/plugins/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/raphael/raphael.min.js') }}"></script>
 
     <!-- Custom Js -->
-    <script src="{{ asset('assets/pages/dashboard-demo.js') }}"></script>
+    <script src="{{ asset('assets-admin/pages/dashboard-demo.js') }}"></script>
 
     <!-- Sweet Alerts Js-->
-    <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
     <!--dropify-->
-    <script src="{{ asset('assets/plugins/dropify/dropify.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/dropify/dropify.min.js') }}"></script>
 
     <!-- App js -->
-    <script src="{{ asset('assets/js/theme.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/theme.js') }}"></script>
 
     <script>
         // Ajax CSRF Token

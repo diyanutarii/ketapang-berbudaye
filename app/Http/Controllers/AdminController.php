@@ -45,7 +45,7 @@ class AdminController extends Controller
                 ->make(true);
         }
 
-        return view('admin.administrators.index', $data);
+        return view('admin.admin.index', $data);
     }
 
     function detail(Request $request)
@@ -53,14 +53,14 @@ class AdminController extends Controller
         $data['title'] = Lang::get('admin/administrator.head-title');
         $data['administrator'] = Admin::where('id', Crypt::decrypt($request->id))->firstOrFail();
 
-        return view('admin.administrators.detail', $data);
+        return view('admin.admin.detail', $data);
     }
 
     function create()
     {
         $data['title'] = Lang::get('admin/administrator.head-title');
 
-        return view('admin.administrators.form', $data);
+        return view('admin.admin.form', $data);
     }
 
     function edit(Request $request)
@@ -68,7 +68,7 @@ class AdminController extends Controller
         $data['title'] = Lang::get('admin/administrator.head-title');
         $data['administrator'] = Admin::where('id', Crypt::decrypt($request->id))->firstOrFail();
 
-        return view('admin.administrators.form', $data);
+        return view('admin.admin.form', $data);
     }
 
     function check(Request $request)

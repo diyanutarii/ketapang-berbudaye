@@ -15,12 +15,12 @@
     <x-favicon></x-favicon>
 
     <!-- Sweet Alerts css -->
-    <link href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- App css -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/theme.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets-admin/css/theme.min.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -40,17 +40,17 @@
     <!-- end page -->
 
     <!-- jQuery  -->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/js/metismenu.min.js') }}"></script>
-    <script src="{{ asset('assets/js/waves.js') }}"></script>
-    <script src="{{ asset('assets/js/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/metismenu.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/waves.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/simplebar.min.js') }}"></script>
 
     <!-- Sweet Alerts Js-->
-    <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets-admin/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
     <!-- App js -->
-    <script src="{{ asset('assets/js/theme.js') }}"></script>
+    <script src="{{ asset('assets-admin/js/theme.js') }}"></script>
 
     <script>
         // Ajax CSRF Token

@@ -84,5 +84,5 @@ Route::group(['domain' => 'admin.' . env('DOMAIN')], function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing.index');
 });

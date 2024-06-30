@@ -27,5 +27,12 @@ class AdminSeeder extends Seeder
             'level' => "Super Admin",
             'password' => bcrypt(12341234),
         ]);
+
+        Admin::factory()->create([
+            'name' => 'Kayong Developer',
+            'email' => 'kayongdeveloper@gmail.com',
+            'level' => "Super Admin",
+            'password' => bcrypt(12341234),
+        ]);
     }
 }

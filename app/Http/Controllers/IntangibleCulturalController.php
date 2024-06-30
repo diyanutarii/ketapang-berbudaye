@@ -38,7 +38,7 @@ class IntangibleCulturalController extends Controller
                 ->make(true);
         }
 
-        return view('admin.intangible-cultural-heritages.index', $data);
+        return view('admin.warisan-budaya-tak-benda.index', $data);
     }
 
     function detail(Request $request)
@@ -46,14 +46,14 @@ class IntangibleCulturalController extends Controller
         $data['title'] = Lang::get('admin/intangible.head-title');
         $data['intangible_cultural_heritage'] = IntangibleCultureHeritage::where('id', Crypt::decrypt($request->id))->firstOrFail();
 
-        return view('admin.intangible-cultural-heritages.detail', $data);
+        return view('admin.warisan-budaya-tak-benda.detail', $data);
     }
 
     function create()
     {
         $data['title'] = Lang::get('admin/intangible.head-title');
 
-        return view('admin.intangible-cultural-heritages.form', $data);
+        return view('admin.warisan-budaya-tak-benda.form', $data);
     }
 
     function edit(Request $request)
@@ -61,7 +61,7 @@ class IntangibleCulturalController extends Controller
         $data['title'] = Lang::get('admin/intangible.head-title');
         $data['intangible_cultural_heritage'] = IntangibleCultureHeritage::where('id', Crypt::decrypt($request->id))->firstOrFail();
 
-        return view('admin.intangible-cultural-heritages.form', $data);
+        return view('admin.warisan-budaya-tak-benda.form', $data);
     }
 
     function check(Request $request)

@@ -4,20 +4,19 @@
     <div class="mx-auto w-auto d-block bg-white shadow-lg rounded my-5">
         <div class="py-3 px-5">
             <div class="dropdown d-inline-block float-right">
-                <x-lang-button></x-lang-button>
+                <x-admin-lang-button></x-admin-lang-button>
             </div>
 
             <div class="text-center mb-1">
-                <x-logo></x-logo>
+                <x-admin-logo></x-admin-logo>
             </div>
 
-            <x-alert></x-alert>
+            <x-admin-alert></x-admin-alert>
 
             <h1 class="h5 mt-2 mb-1">@lang('auth/reset-password.title')</h1>
             <p class="text-muted mb-4">@lang('auth/reset-password.subtitle')</p>
             <div class="text-center">
-                <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="Generic placeholder image"
-                    class="avatar-md rounded-circle img-thumbnail">
+                <img src="{{ asset('assets-admin/images/users/avatar-1.jpg') }}" class="avatar-md rounded-circle img-thumbnail">
                 <h1 class="h5 mb-4 mt-2">{{ $user->name }}</h1>
             </div>
             <form id="form" action="{{ url('reset-password') }}" method="POST">
